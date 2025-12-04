@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Simple Website</title>
+  <meta name="description" content="A simple responsive website template with HTML, CSS and JavaScript." />
+
+  <style>
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#6ee7b7;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --max-width:1100px;
+      --ff-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--ff-sans);
+      background:linear-gradient(180deg,#071025 0%, #071022 60%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:32px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#042027}
+    nav{display:flex;gap:20px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:var(--accent);color:#042027;padding:8px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+
+    /* Mobile */
+    .hamburger{display:none;cursor:pointer}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0}
+    .hero h1{font-size:36px;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .hero .actions{display:flex;gap:12px}
+
+    /* Card */
+    .card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));padding:20px;border-radius:var(--radius);box-shadow:0 6px 20px rgba(2,6,23,0.6);}
+
+    /* Features grid */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+    .feature{padding:18px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.03)}
+    .feature h4{margin:0 0 8px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:10px;color:inherit;font:inherit}
+    input:focus,textarea:focus{outline:2px solid rgba(110,231,183,0.18);border-color:rgba(110,231,183,0.28)}
+    button[type="submit"]{background:linear-gradient(90deg,var(--accent),#60a5fa);border:0;padding:12px;border-radius:10px;font-weight:700;cursor:pointer}
+
+    /* Footer */
+    footer{padding:28px 0;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .features{grid-template-columns:repeat(2,1fr)}
+      nav{display:none}
+      .hamburger{display:block}
+    }
+    @media (max-width:640px){
+      .features{grid-template-columns:1fr}
+      .container{padding:18px}
+      .logo{width:44px;height:44px}
+      .hero h1{font-size:28px}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <div style="font-weight:800">SiteName</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Simple, fast, beautiful</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#">Get started</a>
+      </nav>
+
+      <div class="hamburger" id="hamburger" aria-hidden="true">☰</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1>Build something great — fast.</h1>
+          <p>Stylish, minimal template you can copy and modify. Responsive, accessible and lightweight so it loads quickly.</p>
+          <div class="actions">
+            <a class="cta" href="#contact">Start Free</a>
+            <a href="#features" style="color:var(--muted);align-self:center;text-decoration:underline">See features</a>
+          </div>
+
+          <div class="features" id="features">
+            <div class="feature card">
+              <h4>Performance</h4>
+              <p>Small bundle size and optimized markup for fast loading on mobile networks.</p>
+            </div>
+            <div class="feature card">
+              <h4>Accessibility</h4>
+              <p>Keyboard friendly, semantic HTML, and clear focus states for screen-reader users.</p>
+            </div>
+            <div class="feature card">
+              <h4>Customizable</h4>
+              <p>Easily change colors, spacing and layout — all in one file.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card" aria-labelledby="signup-title">
+          <h3 id="signup-title">Join our newsletter</h3>
+          <p style="color:var(--muted);margin-bottom:12px">Get monthly tips and templates. No spam — unsubscribe anytime.</p>
+          <form id="newsletterForm">
+            <input type="email" id="email" placeholder="Your email address" required />
+            <button type="submit">Subscribe</button>
+            <div id="nf-msg" style="margin-top:8px;color:var(--muted);font-size:13px"></div>
+          </form>
+        </aside>
+      </section>
+
+      <section id="pricing" style="margin-top:26px">
+        <h2 style="margin-bottom:12px">Pricing</h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+          <div class="card">
+            <h4>Free</h4>
+            <p style="color:var(--muted)">For personal projects — forever.</p>
+            <p style="font-weight:800;margin-top:12px">$0</p>
+          </div>
+          <div class="card">
+            <h4>Pro</h4>
+            <p style="color:var(--muted)">For freelancers and small teams.</p>
+            <p style="font-weight:800;margin-top:12px">$12 / month</p>
+          </div>
+          <div class="card">
+            <h4>Enterprise</h4>
+            <p style="color:var(--muted)">Custom plan for larger teams.</p>
+            <p style="font-weight:800;margin-top:12px">Contact us</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" style="margin-top:30px">
+        <h2>Contact</h2>
+        <div class="card" style="margin-top:12px">
+          <form id="contactForm">
+            <input type="text" id="name" placeholder="Your name" required />
+            <input type="email" id="email2" placeholder="Email" required />
+            <textarea id="message" rows="5" placeholder="How can we help?" required></textarea>
+            <button type="submit">Send message</button>
+            <div id="cf-msg" style="margin-top:8px;color:var(--muted);font-size:13px"></div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <span id="year"></span> SiteName — Built with care.</div>
+        <div style="color:var(--muted)">Made by you. Crafted for speed.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Small JS to power interactions
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle (simple)
+    const hamburger = document.getElementById('hamburger');
+    hamburger.addEventListener('click', ()=>{
+      const nav = document.querySelector('nav');
+      if(nav.style.display === 'flex'){
+        nav.style.display = '';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.position = 'absolute';
+        nav.style.right = '32px';
+        nav.style.top = '72px';
+        nav.style.background = 'rgba(3,6,12,0.6)';
+        nav.style.padding = '12px';
+        nav.style.borderRadius = '10px';
+      }
+    });
+
+    // Newsletter form (demo only)
+    document.getElementById('newsletterForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('nf-msg');
+      if(!email.includes('@')){ msg.textContent = 'Please enter a valid email.'; return }
+      msg.textContent = 'Thanks — you are subscribed (demo).';
+      e.target.reset();
+    });
+
+    // Contact form validation + fake submit
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email2').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const out = document.getElementById('cf-msg');
+      if(!name || !email || !message){ out.textContent = 'Please fill all fields.'; return }
+      out.textContent = 'Thanks, message sent (demo).';
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
